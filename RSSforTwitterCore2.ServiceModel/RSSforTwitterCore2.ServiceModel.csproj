@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Readers\ITwitterReader.cs" />
+    <None Include="Readers\TwitterReader.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ServiceStack.Interfaces.Core" Version="1.0.41" />
+    <PackageReference Include="TweetinviAPI" Version="1.2.0.1" />
+    <PackageReference Include="WilderMinds.RssSyndication" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>

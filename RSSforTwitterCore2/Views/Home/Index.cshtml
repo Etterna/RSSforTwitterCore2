@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var win = $(window);
+            win.scroll(function () {
+                if ($(document).height() - win.height() == win.scrollTop()) {
+                    $('#loading').show();
+
+                    $.ajax({
+                        url: document.baseURI + "rssNextBatch",
+                        success: function (rssBatch) {
+
+                            var channel = document.getElementsByTagName("channel")[0];
+                            if (channel == undefined) return;
+
+                            var items = rssBatch.documentElement.firstElementChild;
+                            while (items.childElementCount) {
+                                var item = items.firstElementChild;
+                                if (item.tagName == "item")
+                                    channel.appendChild(item);
+                                else
+                                    items.removeChild(item);
+                            }
+                            $('#loading').hide();
+                        }
+                    });
+                }
+            });
+        });
+
+        document.body.onload = function() {
+            $.ajax({
+                url: document.baseURI + "rss",
+                success: function(rss) {
+                    $("#RssDiv").html(rss.documentElement.outerHTML);
+                    setInterval(function() {
+                            $.ajax({
+                                url: document.baseURI + "rssUpdate",
+                                success: function(newRssItems) {
+                                    var items = newRssItems.documentElement.firstElementChild;
+                                    var channel = document.getElementsByTagName("channel")[0];
+                                    while (items.childElementCount) {
+                                        var item = items.firstElementChild;
+                                        if (item.tagName == "item")
+                                            channel.insertBefore(item, channel.children[4]);
+                                        else
+                                            items.removeChild(item);
+                                    }
+                                }
+                            });
+                        },
+                        60000);
+                    $('#loading').hide();
+                }
+            });
+        }
+    </script>
+}
+<div class="table">
+    <div id="RssDiv" class="table-row">
+    </div>
+    <div class="table-row" style="text-align:center">
+        <img id="loading" src="images/loading.gif" alt="Loading…"/>
+    </div>
+</div>

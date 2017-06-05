@@ -1,0 +1,84 @@
+﻿channel title, channel description, channel link {
+    display: none;
+}
+
+rss {
+    display: block;
+    font-family: verdana, arial;
+}
+
+channel item {
+    display: block;
+    background: whitesmoke;
+    margin: 5px;
+    padding: 2px;
+    color: black;
+    font-size: medium;
+    border-top: 2px solid silver;
+    border-bottom: 2px solid silver;
+}
+
+    channel item title {
+        display: block;
+        margin: 5px;
+        padding: 2px;
+        color: black;
+        font-size: medium;
+        font-weight: bold;
+        border-bottom: 1px solid silver;
+    }
+
+author {
+    display: block;
+    margin: 5px;
+    padding: 2px;
+}
+
+subtitle, channel item description {
+    display: block;
+    margin: 5px;
+    padding: 2px;
+    color: gray;
+    font-style: italic;
+}
+
+/*link {
+    display: block;
+    font-size: small;
+    color: lightskyblue;
+    padding-left: 10px;
+}*/
+
+entry, item {
+    display: block;
+    padding: 2px 30px 2px 30px;
+    border-bottom: 1px solid silver;
+    border-top: 1px solid silver;
+}
+
+published, pubdate {
+    display: block;
+    padding: 2px 30px 2px 30px;
+    font-size: small;
+}
+
+docs {
+    display: block;
+    background-color: #ffffe6;
+    margin: 20px;
+    text-align: center;
+    padding: 5px;
+    color: #7f7f7f;
+    border: 1px solid silver;
+}
+
+enclosure {
+    display: block;
+    width: auto;
+    height: auto;
+}
+/* all hidden elements */
+language, lastBuildDate, ttl, guid, category, updated, id, generator, link {
+    display: none;
+}
+
